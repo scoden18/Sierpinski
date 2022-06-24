@@ -7,7 +7,7 @@ def main():
     win.setBackground(color_rgb(255,255,255))
     
     #outer triangle vertices x,y starting in top left
-    c = 499; d = 1
+    c = 499; d = 1 #d = 135 for equilateral
     e = 1; f = 998
     g = 998; h = 998
     
