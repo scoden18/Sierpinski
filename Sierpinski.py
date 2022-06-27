@@ -1,15 +1,16 @@
 #This uses graphics.py
 from graphics import *
 import random
+import math
 
 def main():
-    win = GraphWin("triangle", 999, 999)
+    win = GraphWin("triangle", 1920, 1000)
     win.setBackground(color_rgb(255,255,255))
     
     #outer triangle vertices x,y starting in top left
-    c = 499; d = 1 #d = 135 for equilateral
-    e = 1; f = 998
-    g = 998; h = 998
+    c = 960; d = 0
+    e = 0; f = 1000
+    g = 1920; h = 1000
     
     #draw vertices
     Dot1 = Point(c,d)
@@ -19,31 +20,29 @@ def main():
     Dot3 = Point(g,h)
     Dot3.draw(win)
     
-    #random point coordinates
-    a = random.randint(1,998)
-    b = random.randint(1,998)
+    #draw random point
+    a = random.randint(1,1920)
+    b = random.randint(1,1000)
+    NewDot = Point(a,b)
+    NewDot.draw(win)
     
     n=0
     while n < 50000: #<-- number of dots drawn
-        NewDot = Point(a,b)
-        NewDot.draw(win)
-        
-        #spaghetti code but it works
         pick = random.randint(1,3)
         if pick == 1:
-            NewDot2 = Point((c+a)/2,(d+b)/2)
-            a = (c+a)/2
-            b = (d+b)/2
+            a = math.floor((c+a)/2)
+            b = math.floor((d+b)/2)
+            NewDot2 = Point(a,b)
             NewDot2.draw(win)
         if pick == 2:
-            NewDot2 = Point((e+a)/2,(f+b)/2)
-            a = (e+a)/2
-            b = (f+b)/2
+            a = math.floor((e+a)/2)
+            b = math.floor((f+b)/2)
+            NewDot2 = Point(a,b)
             NewDot2.draw(win)
         if pick == 3:
-            NewDot2 = Point((g+a)/2,(h+b)/2)
-            a = (g+a)/2
-            b = (h+b)/2
+            a = math.floor((g+a)/2)
+            b = math.floor((h+b)/2)
+            NewDot2 = Point(a,b)
             NewDot2.draw(win)
         n+=1
     win.getMouse()
